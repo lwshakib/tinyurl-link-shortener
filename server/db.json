@@ -1,0 +1,22 @@
+{
+  "urls": {
+    "C2c588g": {
+      "originalUrl": "https://google.com",
+      "shortCode": "C2c588g",
+      "createdAt": "2026-01-18T06:09:43.819Z",
+      "clicks": 31
+    },
+    "N_4oLWk": {
+      "originalUrl": "https://jsonplaceholder.typicode.com/users",
+      "shortCode": "N_4oLWk",
+      "createdAt": "2026-01-18T06:33:31.120Z",
+      "clicks": 1
+    },
+    "1eWtkbG": {
+      "originalUrl": "https://jsonplaceholder.typicode.com/users",
+      "shortCode": "1eWtkbG",
+      "createdAt": "2026-01-18T06:41:29.108Z",
+      "clicks": 0
+    }
+  }
+}
