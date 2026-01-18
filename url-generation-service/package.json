@@ -1,5 +1,6 @@
 {
   "name": "url-generation-service",
+  "description": "gRPC microservice for unique short code generation",
   "module": "src/index.ts",
   "type": "module",
   "scripts": {
