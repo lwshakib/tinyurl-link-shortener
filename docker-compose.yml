@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: tinyurl-server
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - REDIS_URL=redis://redis:6379
+      - URL_GEN_SERVICE_URL=url-generation-service:50051
+    volumes:
+      - ./server/db.json:/app/db.json
+      - ./proto:/app/proto
+    depends_on:
+      - redis
+      - url-generation-service
+    restart: unless-stopped
+
+  url-generation-service:
+    build:
+      context: ./url-generation-service
+      dockerfile: Dockerfile
+    container_name: tinyurl-gen-service
+    ports:
+      - "50051:50051"
+    volumes:
+      - ./server/db.json:/server/db.json
+      - ./proto:/proto
+    restart: unless-stopped
+
+  redis:
+    image: redis:alpine
+    container_name: tinyurl-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: tinyurl-web
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:3001
+    depends_on:
+      - server
+    restart: unless-stopped
