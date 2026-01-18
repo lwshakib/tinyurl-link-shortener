@@ -5,6 +5,8 @@ A high-performance, enterprise-grade URL shortener application built with a mode
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Status](https://img.shields.io/badge/status-active-success.svg)
 
+![App Demo](./app-demo.png)
+
 ## 🌟 Key Features
 
 -   **Microservices Architecture**: Separate services for API handling and URL generation.
