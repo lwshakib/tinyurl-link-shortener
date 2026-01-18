@@ -14,7 +14,7 @@ services:
       - URL_GEN_SERVICE_URL=url-generation-service:50051
     volumes:
       - ./server/db.json:/app/db.json
-      - ./proto:/app/proto
+      - ./proto:/proto
     networks:
       - tinyurl-net
     depends_on:
