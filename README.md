@@ -14,6 +14,18 @@ A high-performance, enterprise-grade URL shortener application built with a mode
 -   **Robust Persistence**: JSON-based file storage (easily swappable for SQL/NoSQL).
 -   **Containerized**: Fully Dockerized for zero-config deployment.
 
+### 📐 Architecture Diagram
+
+```mermaid
+graph TD
+    User[User] --> Web[Frontend - Next.js]
+    User --> API[API Server - Express]
+    API --> Redis[(Redis Cache)]
+    API --> Gen[URL Gen Service - gRPC]
+    Gen --> DB[(JSON DB)]
+    API --> DB
+```
+
 ## 🏗️ Architecture Overview
 
 The system comprises three primary containers orchestration via Docker Compose:
