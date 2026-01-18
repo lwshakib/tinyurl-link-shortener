@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "build": "echo 'No build needed for Bun'",
-    "start": "bun run src/index.ts"
+    "build": "bun build src/index.ts --outdir dist --target bun --packages external --minify",
+    "start": "bun run dist/index.js"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.14.3",
