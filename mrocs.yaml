@@ -1,0 +1,8 @@
+procs:
+  web: 
+    shell: cd web && bun install && bun run dev
+    autoRestart: true
+
+  server:
+    shell: cd server && bun install && bun run dev
+    autoRestart: true
