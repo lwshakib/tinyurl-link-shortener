@@ -22,3 +22,11 @@ We implement a **Least Frequently Used (LFU)** eviction policy:
 *   **Limit**: Tracks usage for active items.
 *   **Eviction**: If the cache limit (default: 10) is reached, the least frequently accessed item is removed.
 *   **Duration**: Keys expire after 24 hours.
+
+### 🐛 Debugging
+
+To view the cache in real-time, you can use **RedisInsight** or the CLI:
+
+```bash
+docker exec -it tinyurl-redis redis-cli zrange cache:frequency 0 -1 WITHSCORES
+```
