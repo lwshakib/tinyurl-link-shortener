@@ -15,6 +15,8 @@ services:
     volumes:
       - ./server/db.json:/app/db.json
       - ./proto:/app/proto
+    networks:
+      - tinyurl-net
     depends_on:
       - redis
       - url-generation-service
@@ -30,6 +32,8 @@ services:
     volumes:
       - ./server/db.json:/server/db.json
       - ./proto:/proto
+    networks:
+      - tinyurl-net
     restart: unless-stopped
 
   redis:
@@ -37,6 +41,8 @@ services:
     container_name: tinyurl-redis
     ports:
       - "6379:6379"
+    networks:
+      - tinyurl-net
     restart: unless-stopped
 
   web:
@@ -50,4 +56,10 @@ services:
       - NEXT_PUBLIC_API_URL=http://localhost:3001
     depends_on:
       - server
+    networks:
+      - tinyurl-net
     restart: unless-stopped
+
+networks:
+  tinyurl-net:
+    driver: bridge
