@@ -128,6 +128,9 @@ export const redirectUrl = asyncHandler(async (req: Request, res: Response) => {
       .catch((err) => logger.error(`Error updating clicks: ${err}`)) // Catch and log any errors from the background update
 
     // Immediately redirect the user to the cached original URL
+    if (!isValidUrl(cachedUrl)) {
+      throw new ApiError(400, "Invalid redirect URL")
+    }
     return res.redirect(cachedUrl)
   }
 
@@ -158,6 +161,9 @@ export const redirectUrl = asyncHandler(async (req: Request, res: Response) => {
   )
 
   // Redirect the user to the retrieved original URL
+  if (!isValidUrl(originalUrl)) {
+    throw new ApiError(400, "Invalid redirect URL")
+  }
   res.redirect(originalUrl)
 })
 
